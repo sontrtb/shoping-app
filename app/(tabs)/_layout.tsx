@@ -5,22 +5,21 @@ import { Platform } from 'react-native';
 import { HapticTab } from '@/components/HapticTab';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import colors from '@/config/color';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: colors.ICON_TAB_FOCUS,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
           default: {},
@@ -34,10 +33,24 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="catalog"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Catalog',
+          tabBarIcon: ({ color }) => <FontAwesome5 name="book-open" size={22} color={color} />,
+        }}
+      />
+       <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Chat',
+          tabBarIcon: ({ color }) => <Ionicons name="chatbubbles" size={28} color={color} />,
+        }}
+      />
+       <Tabs.Screen
+        name="cart"
+        options={{
+          title: 'Cart',
+          tabBarIcon: ({ color }) => <Ionicons name="cart-sharp" size={28} color={color} />,
         }}
       />
     </Tabs>
