@@ -1,13 +1,14 @@
 import colors from "@/config/color"
 import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from "react-native"
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { Link } from 'expo-router'
 
 interface IPopularityProps {
     category: number
 }
 
 function Popularity(props: IPopularityProps) {
-    const {category} = props
+    const { category } = props
 
     const listWedding = [
         {
@@ -124,9 +125,13 @@ function Popularity(props: IPopularityProps) {
     ]
 
     const renderList = () => {
-        if(category === 1) return listWedding
-        if(category === 2) return listDecor
-        if(category === 3) return listGift
+        if (category === 1) return listWedding
+        if (category === 2) return listDecor
+        if (category === 3) return listGift
+    }
+
+    const onOpenDetail = () => {
+
     }
 
     return (
@@ -138,26 +143,28 @@ function Popularity(props: IPopularityProps) {
             >
                 {
                     renderList()?.map(product => (
-                        <TouchableOpacity key={product.id} style={styles.card} activeOpacity={0.6}>
-                            <Image
-                                source={{ uri: product.image }}
-                                style={styles.image}
-                            />
-                            <View style={styles.contentCard}>
-                                <View>
-                                    <Text style={styles.prdName}>{product.name}</Text>
-                                    <Text style={styles.prdPrice}>${product.price}</Text>
-                                </View>
+                        <Link href="/product-detail" asChild>
+                            <TouchableOpacity key={product.id} style={styles.card} activeOpacity={0.6}>
+                                <Image
+                                    source={{ uri: product.image }}
+                                    style={styles.image}
+                                />
+                                <View style={styles.contentCard}>
+                                    <View>
+                                        <Text style={styles.prdName}>{product.name}</Text>
+                                        <Text style={styles.prdPrice}>${product.price}</Text>
+                                    </View>
 
-                                <View style={styles.starWrap}>
-                                    {
-                                        new Array(product.star).fill(1).map(() => (
-                                            <AntDesign name="star" size={14} color="#F5DF55" />
-                                        ))
-                                    }
+                                    <View style={styles.starWrap}>
+                                        {
+                                            new Array(product.star).fill(1).map(() => (
+                                                <AntDesign name="star" size={14} color="#F5DF55" />
+                                            ))
+                                        }
+                                    </View>
                                 </View>
-                            </View>
-                        </TouchableOpacity>
+                            </TouchableOpacity>
+                        </Link>
                     ))
                 }
             </ScrollView>
