@@ -25,8 +25,11 @@ export default function HomeScreen() {
         </View>
 
         <Category onChange={onChangeCategory}/>
+
         <Banner />
+
         <Service />
+        
         <Popularity category={category}/>
       </View>
     </SafeAreaView>

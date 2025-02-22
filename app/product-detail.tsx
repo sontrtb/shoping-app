@@ -4,6 +4,8 @@ import { View, Text, StyleSheet } from "react-native"
 
 
 function ProductDetail() {
+    const pri = 90
+
     return (
         <View>
             <Slider />
@@ -11,7 +13,7 @@ function ProductDetail() {
             <View style={styles.content}>
                 <View style={styles.row}>
                     <Text>Spark</Text>
-                    <Text>$90</Text>
+                    <Text>${pri}</Text>
                 </View>
                 <View style={styles.row}>
                     <Text>Availability</Text>
@@ -19,7 +21,7 @@ function ProductDetail() {
                 </View>
                 <View style={styles.row}>
                     <Text>Rating</Text>
-                    <Text>$90</Text>
+                    <Text>${pri * 9}</Text>
                 </View>
             </View>
 
