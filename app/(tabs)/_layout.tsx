@@ -39,14 +39,14 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <FontAwesome5 name="book-open" size={22} color={color} />,
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="chat"
         options={{
           title: 'Chat',
           tabBarIcon: ({ color }) => <Ionicons name="chatbubbles" size={28} color={color} />,
         }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name="cart"
         options={{
           title: 'Cart',
